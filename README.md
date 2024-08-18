@@ -2,7 +2,7 @@
 
 ## Purpose
 
-You can find what IP you are using in iOS-Settings, theese are just some
+Current IP info can be found in iOS-Settings, theese are just some
 shorthands to get the same info directly inside iSH.
 
 ## tools provided
@@ -19,20 +19,16 @@ shorthands to get the same info directly inside iSH.
 #### A shortcut that writes the current ip to a file.
 
 - Create a shortcut and give it a name like SetLocal-IP
-- Add a "wait", set it to something like 3 seconds. Without this you
-will often end up with an empty file, since this shortcut is triggered
+- Add a "wait", set it to something like 3 seconds.
+Without this, finding local IP will often fail, since this shortcut is triggered
 imeditally on connection, and it typically takes a moment for the
-device to recivr an IP
+device to recive an IP
 - Add a "Get current IP address" Set it to local IPv4
 - Add a "Append to Text File"  Use "Current IP Adress" Select a Folder
 where to save it, and select a file name. This folder must be within
-the file hierarchy you gave iSH access to with the mount command. Make
+the file hierarchy iSH was given access to with the mount command. Make
 sure to enable "Make New Line"!
 - Click play to run it once, in order for the file to be created.
-
-The ip-tools inside iSH just read the last line of this file, but over
-time it will slowly grow, so you might eventually want to remove it,
-since next time you connect it will be recreated.
 
 #### Trigger the first Shortcut to run on Network Connect
 
@@ -40,12 +36,12 @@ since next time you connect it will be recreated.
 - Add a Personal Automation
 - Select Wi-Fi, for Network select "Any Network" then select "Network
 Joined". Enable "Run After Connection interruption" and select "Run Immeditally"
-- Click "Next" and select the shortcut logging your IP rceated above -
+- Click "Next" and select the shortcut logging local IP created above -
 done!
 
 #### Remove the file when disconnecting from Network
 
-- Add "Get File from Folder" Select the file you defined above
+- Add "Get File from Folder" Select the local IP file defined above
 - Add "If" Select File has any value
 - Add Delete Files, select the same file again
 
@@ -62,7 +58,7 @@ stored or someplace above.
 
 ## Multiple devices running iSH
 
-If you use iSH on more than one device, it is simpler if this ip
+If iSH is used  on more than one device, it is simpler if this IP
 number file is not stored on iCloud, since then it would be synced and
 nodes will always show the last connected IP-number, regardless of
 from which device it was generated.
@@ -76,6 +72,6 @@ it.
 
 Copy the full path found to the clipboard, or remember it :)
 
-run `./deploy` inside this folder. First time it will prompt you for 
-the file provided by the Shortcut. Paste or type the filename you
+run `./deploy` inside this folder. First time it will prompt for 
+the file provided by the Shortcut. Paste or type the filename
 found above. This filename is saved to `~/.local_ip_file`
