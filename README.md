@@ -37,7 +37,7 @@ Choose the iOS folder where the IP file will be stored, or select a parent direc
    - In the next step, assign the shortcut created in step 1 to run on connection.
 
 3. **Remove the IP File on Network Disconnect:**
-   - Add an action to "Get File" from the folder containing the local IP file.
+   - Add an action to "Get File from Foler" the folder containing the local IP file.
    - Add an "If" condition: "File has any value".
    - Add a "Delete Files" action targeting the same IP file.
 
