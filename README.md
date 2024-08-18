@@ -74,8 +74,8 @@ and do something like: `find /mnt | grep ip_local` It doesnt need to
 match the full file name used, as long as it unique enough to find
 it.
 
-Copy the full path found to the clipboard.
+Copy the full path found to the clipboard, or remember it :)
 
 run `./deploy` inside this folder. First time it will prompt you for 
 the file provided by the Shortcut. Paste or type the filename you
-found above. This filename is saved to `~/.synced_local_ip`
+found above. This filename is saved to `~/.local_ip_file`
