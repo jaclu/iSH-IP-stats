@@ -1,4 +1,4 @@
-# iSH-ip-stats
+# iSH-IP-stats
 
 ## Purpose
 
