@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+#  Part of https://github.com/jaclu/helpfull_scripts.git
+#
+#  License: MIT
+#
+#  Copyright (c) 2024: Jacob.Lundqvist@gmail.com
+#
+#  Reports Public IP
+#
+
+msg="$(ip-local)" || {
+    echo "$msg"
+    exit 1
+}
+
+if  curl -s -4 https://ifconfig.me || curl -s https://ifconfig.me; then
+    printf '\n'
+else
+    echo "Error: Unable to determine"
+    exit 1
+fi

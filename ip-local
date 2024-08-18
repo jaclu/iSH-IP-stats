@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+#  Part of https://github.com/jaclu/helpfull_scripts.git
+#
+#  License: MIT
+#
+#  Copyright (c) 2024: Jacob.Lundqvist@gmail.com
+#
+#  Reports Local IP
+#
+
+# strip potential -aok suffix
+f_ip_local=/iCloud/temp/ip_local_"$(hostname -s | cut -d- -f1)".txt
+
+# echo ">> f_ip_local [$f_ip_local]"
+
+if [ -f "$f_ip_local" ]; then
+    local_ip="$(tail -n 1 "$f_ip_local")"
+    if [ -n "$local_ip" ]; then
+	echo "$local_ip"
+    else
+	echo "File empty: $f_ip_local"
+	exit 2
+    fi
+else
+    echo "Device not connected to any network"
+    exit 1
+fi
