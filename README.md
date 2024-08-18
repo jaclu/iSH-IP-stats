@@ -3,7 +3,7 @@
 ## Purpose
 
 Current IP info can be found in iOS-Settings, theese are just some
-shorthands to get the same info directly inside iSH.
+utilities to get the same info directly inside iSH.
 
 ## tools provided
 
