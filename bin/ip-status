@@ -10,22 +10,15 @@
 #
 
 if local_ip="$(ip-local)"; then
-    network-check.sh
+    network-check
     network_status="$?"
     echo   "Local  IP: $local_ip"
     printf "Public IP: "
     case "$network_status" in
         1) echo "Can't detect when not connected to Internet" ;;
         2) echo "Can't detect without DNS" ;;
-        *)
-            if  curl -s -4 https://ifconfig.me || curl -s https://ifconfig.me; then
-                printf '\n'
-            else
-                echo "Error: Unable to determine"
-            fi
-            ;;
+        *) ip-public verified ;;
     esac
 else
     echo "Device not connected to any network"
 fi
-

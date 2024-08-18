@@ -1,3 +1,19 @@
 #!/bin/sh
 
-echo "Dummy deploy"
+f_ip_local_source="$HOME/.local_ip_file"
+
+if [ ! -f "$f_ip_local_source"  ]; then
+    echo "Current local ip filename:"
+    read f_ip_local
+    if [ ! -f "$f_ip_local" ]; then
+        echo "No such file!"
+        exit 1
+    fi
+        
+    echo "$f_ip_local" >"$f_ip_local_source"
+fi
+
+sudo cp -av bin/ip-local /usr/local/bin
+sudo cp -av bin/ip-public /usr/local/bin
+sudo cp -av bin/ip-status /usr/local/bin
+sudo cp -av bin/network-check /usr/local/bin

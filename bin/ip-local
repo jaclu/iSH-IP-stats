@@ -9,10 +9,14 @@
 #  Reports Local IP
 #
 
-# strip potential -aok suffix
-f_ip_local=/iCloud/temp/ip_local_"$(hostname -s | cut -d- -f1)".txt
+f_ip_local_source="$HOME/.local_ip_file"
 
-# echo ">> f_ip_local [$f_ip_local]"
+if [ ! -f "$f_ip_local_source" ]; then
+    echo "ERROR: File descibing where local IP is stored is missing: $f_ip_local_source"
+    exit 3
+fi
+
+f_ip_local="$(cat "$f_ip_local_source")"
 
 if [ -f "$f_ip_local" ]; then
     local_ip="$(tail -n 1 "$f_ip_local")"
