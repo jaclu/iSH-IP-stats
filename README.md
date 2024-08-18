@@ -6,7 +6,7 @@ This provides utilities to retrieve IP information directly within iSH, same to 
 
 ## Tools Provided
 
-- **`network-check`**: Displays the network connection status and verifies if DNS is functioning.
+- **`network-check`**: Displays the network connection status and verifies if DNS is functional.
 - **`ip-local`**: Retrieves and displays the local IP address.
 - **`ip-public`**: Retrieves and displays the public IP address (if connected to the internet).
 - **`ip-status`**: Displays both local and public IP addresses (if connected to the internet).
