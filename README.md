@@ -2,8 +2,7 @@
 
 ## Purpose
 
-Current IP info can be found in iOS-Settings, theese are just some
-utilities to get the same info directly inside iSH.
+Current IP information can be found in iOS settings; these are just some utilities to retrieve the same information directly within iSH. Since IP information isn't directly available in iSH, this approach triggers Shortcuts when the network is connected or disconnected.
 
 ## tools provided
 
