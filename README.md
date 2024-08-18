@@ -69,7 +69,7 @@ from which device it was generated.
 
 ## Deployment
 
-Find the file with the IP number, check the mount point you selected
+Find the file with the IP number, check the mount point selected above
 and do something like: `find /mnt | grep ip_local` It doesnt need to
 match the full file name used, as long as it unique enough to find
 it.
