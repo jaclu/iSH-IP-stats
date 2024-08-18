@@ -1,4 +1,13 @@
 #!/bin/sh
+#
+#  Part of https://github.com/jaclu/iSH-IP-stats
+#
+#  License: MIT
+#
+#  Copyright (c) 2024: Jacob.Lundqvist@gmail.com
+#
+#  Deploys files
+#
 
 f_ip_local_source="$HOME/.local_ip_file"
 
