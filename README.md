@@ -13,9 +13,9 @@ Current IP information can be found in iOS settings; these are just some utiliti
 
 ## Dependencies
 
-### iOS Shortcut
+### iOS Shortcuts
 
-#### A shortcut that writes the current ip to a file.
+#### 1 Shortcut that writes the current ip to a file.
 
 - Create a shortcut and give it a name like SetLocal-IP
 - Add a "wait", set it to something like 3 seconds.
@@ -29,7 +29,7 @@ the file hierarchy iSH was given access to with the mount command. Make
 sure to enable "Make New Line"!
 - Click play to run it once, in order for the file to be created.
 
-#### Trigger the first Shortcut to run on Network Connect
+#### 2 Trigger the first Shortcut to run on Network Connect
 
 - Select Automation
 - Add a Personal Automation
@@ -38,13 +38,13 @@ Joined". Enable "Run After Connection interruption" and select "Run Immeditally"
 - Click "Next" and select the shortcut logging local IP created above -
 done!
 
-#### Remove the file when disconnecting from Network
+#### 3 Remove the file when disconnecting from Network
 
 - Add "Get File from Folder" Select the local IP file defined above
 - Add "If" Select File has any value
 - Add Delete Files, select the same file again
 
-#### Trigger the second Shortcut to run on Network Connect
+#### 4 Trigger the second Shortcut to run on Network Connect
 
 More or less the same as the connect automation, but in this case evnt is
 when disconnectig. Run the removal shortcut.
