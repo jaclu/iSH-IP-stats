@@ -43,6 +43,17 @@ Joined". Enable "Run After Connection interruption" and select "Run Immeditally"
 - Click "Next" and select the shortcut logging your IP rceated above -
 done!
 
+#### Remove the file when disconnecting from Network
+
+- Add "Get File from Folder" Select the file you defined above
+- Add "If" Select File has any value
+- Add Delete Files, select the same file again
+
+#### Trigger the second Shortcut to run on Network Connect
+
+More or less the same as the connect automation, but in this case evnt is
+when disconnectig. Run the removal shortcut.
+
 ### Access to the file with current ip
 
 inside iSH do: `mount -t ios . /mnt` and then select what iOS folder to
