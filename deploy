@@ -4,7 +4,7 @@ f_ip_local_source="$HOME/.local_ip_file"
 
 if [ ! -f "$f_ip_local_source"  ]; then
     echo "Current local ip filename:"
-    read f_ip_local
+    read -r f_ip_local
     if [ ! -f "$f_ip_local" ]; then
         echo "No such file!"
         exit 1
