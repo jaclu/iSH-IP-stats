@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This provides utilities to retrieve IP information directly within iSH, similar to what is normally found in iOS settings. Since IP information isn't directly available in iSH, these utilities rely on iOS Shortcuts triggered when the network connects or disconnects to maintain a file with the current IP that is accessible to iSH.
+This provides utilities to retrieve IP information directly within iSH, same to what is available in iOS Settings. Since IP information isn't directly available in iSH, these utilities rely on iOS Shortcuts triggered when the network connects or disconnects to maintain a file with the current IP that is accessible to iSH.
 
 ## Tools Provided
 
@@ -46,7 +46,7 @@ Choose the iOS folder where the IP file will be stored, or select a parent direc
 
 ## Multiple Devices Running iSH
 
-If you run iSH on multiple devices, avoid storing the IP file on iCloud, as this would cause syncing issues. Each device would display the most recent IP, regardless of which device generated it.
+If you run iSH on multiple devices, avoid storing the IP file on iCloud with the same file name on each device, as this can cause syncing issues. Each device will show the most recent IP address, regardless of which device generated it.
 
 ## Deployment
 
