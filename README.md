@@ -2,14 +2,14 @@
 
 ## Purpose
 
-This provides utilities to retrieve IP information directly within iSH, same to what is available in iOS Settings. Since IP information isn't directly available in iSH, these utilities rely on iOS Shortcuts triggered when the network connects or disconnects to maintain a file with the current IP that is accessible to iSH.
+This provides utilities to retrieve IP information directly within iSH, same to what is available in iOS Settings. Since IP information isn't directly available in iSH, these utilities rely on iOS Shortcuts triggered when the network connects or disconnects to maintain a file with the current local IP that is accessible to iSH.
 
 ## Tools Provided
 
 - **`network-check`**: Displays the network connection status and verifies if DNS is functional.
 - **`ip-local`**: Retrieves and displays the local IP address.
 - **`ip-public`**: Retrieves and displays the public IP address (if connected to the internet).
-- **`ip-status`**: Displays both local and public IP addresses (if connected to the internet).
+- **`ip-status`**: Displays both local and public IP addresses (public only reported if connected to the internet).
 
 ## Dependencies
 
@@ -25,7 +25,7 @@ Choose the iOS folder where the IP file will be stored, or select a parent direc
 
 1. **Create a Shortcut to Write the Local IP to a File:**
    - Name the shortcut, e.g., `SetLocal-IP`.
-   - Add a "Wait" action (set to ~3 seconds). This delay allows time for the device to acquire an IP address after connecting.
+   - Add a "Wait" action (set to ~3 seconds). This delay allows time for the device to acquire an IP address after connecting. If `ip-local` reports "File empty", try increasing this value.
    - Add a "Get Current IP Address" action and set it to retrieve the local IPv4 address.
    - Add an "Append to Text File" action, using "Current IP Address" as input. Select the folder (within iSH's mounted hierarchy) where the file should be saved, and specify the filename. Ensure "Make New Line" is enabled.
    - Run the shortcut manually once to create the file.
@@ -51,14 +51,14 @@ If you run iSH on multiple devices, avoid storing the IP file on iCloud with the
 ## Deployment
 
 1. Locate the IP file by checking the mount point in iSH:
-    
+
     `find /mnt | grep ip_local`
 
    The filename doesn't need to be complete, as long as it's unique enough to locate the file.
 
-2. Copy the full path to the IP file.
+1. Copy the full path to the IP file, or remember it.
 
-3. Run the `deploy` script in this folder:
+1. Run the `deploy` script in this folder:
 
     ./deploy
 
