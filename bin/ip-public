@@ -6,11 +6,11 @@
 #
 #  Copyright (c) 2024: Jacob.Lundqvist@gmail.com
 #
-#  Reports Public IP
+#  Reports Public IP via lookup service
 #
 
 if [ "$1" != "verified" ]; then
-    # used by network-check
+    # verified = network-check has already been done
     network-check || exit 1
 fi
 
@@ -18,5 +18,5 @@ if  curl -s -4 https://ifconfig.me || curl -s https://ifconfig.me; then
     printf '\n'
 else
     echo "Error: Unable to determine"
-    exit 1
+    exit 2
 fi

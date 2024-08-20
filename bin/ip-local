@@ -6,7 +6,7 @@
 #
 #  Copyright (c) 2024: Jacob.Lundqvist@gmail.com
 #
-#  Reports Local IP
+#  Reports Local IP, depends on iOS Shortcut to provide this info
 #
 
 f_ip_local_source="$HOME/.local_ip_file"
@@ -21,10 +21,10 @@ f_ip_local="$(cat "$f_ip_local_source")"
 if [ -f "$f_ip_local" ]; then
     local_ip="$(tail -n 1 "$f_ip_local")"
     if [ -n "$local_ip" ]; then
-	echo "$local_ip"
+        echo "$local_ip"
     else
-	echo "File empty: $f_ip_local"
-	exit 2
+        echo "File empty: $f_ip_local"
+        exit 2
     fi
 else
     echo "Device not connected to any network"

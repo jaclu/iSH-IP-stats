@@ -6,19 +6,16 @@
 #
 #  Copyright (c) 2024: Jacob.Lundqvist@gmail.com
 #
-#  Reports network status
+#  Reports local & public IP
 #
 
-if local_ip="$(ip-local)"; then
-    network-check
-    network_status="$?"
-    echo   "Local  IP: $local_ip"
-    printf "Public IP: "
-    case "$network_status" in
-        1) echo "Can't detect when not connected to Internet" ;;
-        2) echo "Can't detect without DNS" ;;
-        *) ip-public verified ;;
-    esac
-else
-    echo "Device not connected to any network"
-fi
+network-check
+network_status="$?"
+
+echo   "Local  IP: $(ip-local)"
+printf "Public IP: "
+case "$network_status" in
+0) ip-public verified ;;
+2) echo "Can't detect without DNS" ;;
+*) echo "Can't detect when not connected to Internet" ;;
+esac
