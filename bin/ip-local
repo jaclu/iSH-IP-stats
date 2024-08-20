@@ -24,6 +24,7 @@ if [ -f "$f_ip_local" ]; then
         echo "$local_ip"
     else
         echo "File empty: $f_ip_local"
+        echo "If this happens often, increase the wait in the shortcut reading the IP-number"
         exit 2
     fi
 else
