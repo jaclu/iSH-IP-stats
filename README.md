@@ -16,7 +16,7 @@ This provides utilities to retrieve IP information directly within iSH, same to 
 ### Accessing the IP File in iSH
 
 To access the file containing the current IP in iSH, the appropriate iOS folder must be mounted. If you have already mounted folders, this step is complete. Otherwise, mount the desired iOS folder:
-    
+
     mount -t ios . /mnt
 
 Choose the iOS folder where the IP file will be stored, or select a parent directory above it.
