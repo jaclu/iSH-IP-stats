@@ -46,7 +46,7 @@ Choose the iOS folder where the IP file will be stored, or select a parent direc
 
 ## Multiple Devices Running iSH
 
-If you run iSH on multiple devices, avoid storing the IP file on iCloud with the same file name on each device, as this can cause syncing issues. Each device will show the most recent IP address, regardless of which device generated it.
+If you run iSH on multiple devices, avoid storing the IP file on iCloud with the same file name on each device, as this can cause syncing issues. Each device will show the most recent IP address, regardless of which device generated it. So if you use iCloud, making sure the filenames are unique per-device handles this issue.
 
 ## Deployment
 
