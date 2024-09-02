@@ -6,32 +6,69 @@
 #
 #  Copyright (c) 2023-2024: Jacob.Lundqvist@gmail.com
 #
-#  Reports network status
+#  Reports network status with msg and exit status
+#   0  connected to the Internet with DNS
+#   1  not connected to Internet
+#   2  connected, but no DNS
 #
 
-ping_tst_node=8.8.8.8
+
+#  Set to false if you do not want to use anything from Google
+if true; then
+    # Primary / secondary nameserver of Google
+    ping_tst_1=8.8.8.8
+    ping_tst_2=8.8.4.4
+else
+    # Primary / secondary nameserver of Cloudflare
+    ping_tst_1=1.1.1.1
+    ping_tst_2=1.0.0.1
+fi
+
+
+#
+#  Just a random domain that can be assumed to always be available
+#  from your DNS server, and where the matching host responds to ping.
+#
 dns_tst_node=amazon.com
 
+
 #
-#  When chrooted ping must be run with sudo - odd ...
+#  The rest is 
 #
-if [ -f /etc/opt/AOK/this_fs_is_chrooted ]; then
-    cmd="sudo ping"
+
+
+ping_check() {
+    $ping_cmd -c 2 "$1" >/dev/null 2>&1
+}
+
+
+if [ "$(uname -s)" = "Linux" ]; then
+    ping_cmd="ping -W 1"
 else
-    cmd="ping"
+    # BSD / MacOS uses this, not bothering with Windows and other platforms...
+    ping_cmd="ping -W 1"
 fi
 
-if $cmd -c 2 "$ping_tst_node" >/dev/null 2>&1; then
-    if $cmd -c 2 "$dns_tst_node" >/dev/null 2>&1; then
-        echo "Connected to the Internet and DNS is resolving!"
-	ex_code=0
-    else
-        echo "***  DNS does not seem to resolve!"
-	ex_code=2
-    fi
-else
-    echo "***  Not able to access the Internet!"
-    ex_code=1
+if [ "$(uname -s)" = "Linux" ] && ! grep -q " / / " /proc/self/mountinfo; then
+    #
+    #  When chrooted ping must be run with sudo ...
+    #
+    ping_cmd="sudo $ping_cmd"
 fi
-echo
-exit "$ex_code"
+
+
+if ! ping_check "$ping_tst_1"; then
+    echo "*** Failed to connect to: $ping_tst_1, trying: $ping_tst_2"
+    if ! ping_check "$ping_tst_2"; then
+        echo "***  Not able to access the Internet!"
+        exit 1
+    fi
+fi
+
+if ping_check "$dns_tst_node"; then
+    echo "Connected to the Internet and DNS is resolving!"
+    exit 0
+else
+    echo "***  DNS does not seem to resolve!"
+    exit 2
+fi
