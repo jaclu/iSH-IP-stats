@@ -36,7 +36,15 @@ else
 fi
 
 ping_check() {
+    #
+    # Using trap prevents the shell from displaying an alarm if dns
+    # fails on MacOS. According to GPT harmles on other platforms
+    #
+    trap '' ALRM 
     $ping_cmd -c 2 "$1" >/dev/null 2>&1
+    ex_code="$?" # need to save to keep it past the trap
+    trap - ALRM
+    return "$ex_code"
 }
 
 if ! command -v ping >/dev/null 2>&1; then
@@ -52,13 +60,15 @@ else
 fi
 
 # When chrooted ping must be run with sudo ...
-if [ "$(uname -s)" = "Linux" ] && ! grep -q " / / " /proc/self/mountinfo; then
+# iSH lacks mountinfo, so if it is missing this check is skipped
+_f=/proc/self/mountinfo
+if [ "$(uname -s)" = "Linux" ] && [ -f "$_f" ] && ! grep -q " / / " "$_f"; then
     ping_cmd="sudo $ping_cmd"
 fi
 
 # Check connectivity
 if ! ping_check "$ping_tst_1"; then
-    echo "*** Failed to connect to: $ping_tst_1, trying: $ping_tst_2"
+    echo "*** Failed to connect to: $ping_tst_1 - trying: $ping_tst_2"
     if ! ping_check "$ping_tst_2"; then
         echo "*** Not able to access the Internet!"
         exit 1
