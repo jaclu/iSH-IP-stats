@@ -12,7 +12,7 @@
 f_ip_local_source="$HOME/.local_ip_file"
 
 if [ ! -f "$f_ip_local_source" ]; then
-    echo "ERROR: File descibing where local IP is stored is missing: $f_ip_local_source"
+    echo "ERROR: File describing where local IP is stored is missing: $f_ip_local_source"
     exit 3
 fi
 
