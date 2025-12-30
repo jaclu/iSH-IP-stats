@@ -12,10 +12,10 @@
 network-check
 network_status="$?"
 
-echo   "Local  IP: $(ip-local)"
+echo "Local  IP: $(ip-local)"
 printf "Public IP: "
 case "$network_status" in
-0) ip-public verified ;;
-2) echo "Can't detect without DNS" ;;
-*) echo "Can't detect when not connected to Internet" ;;
+    0) ip-public verified ;;
+    2) echo "Can't detect without DNS" ;;
+    *) echo "Can't detect when not connected to Internet" ;;
 esac

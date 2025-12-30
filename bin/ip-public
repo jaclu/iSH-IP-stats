@@ -14,7 +14,7 @@ if [ "$1" != "verified" ]; then
     network-check || exit 1
 fi
 
-if  curl -s -4 https://ifconfig.me || curl -s https://ifconfig.me; then
+if curl -s -4 https://ifconfig.me || curl -s https://ifconfig.me; then
     printf '\n'
 else
     echo "Error: Unable to determine"
